@@ -18,5 +18,5 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom, #2a4365, #1a202c);
+  background:   radial-gradient(ellipse farthest-corner at top left, #2a4365, #1a202c);
 }
