@@ -60,9 +60,9 @@ export default function Home() {
     <main className="min-h-screen p-2">
       <Box className="w-full">
         <Tabs value={value} onChange={handleChange} textColor="primary" indicatorColor="primary">
-          <Tab label="Dashboard" className="text-white" {...a11yProps(0)} />
-          <Tab label="Relatório" className="text-white" {...a11yProps(1)} />
-          <Tab label="Configurações gerais" className="text-white" {...a11yProps(2)} />
+          <Tab label="Dashboard" sx={{ color: "white" }} {...a11yProps(0)} />
+          <Tab label="Relatório" sx={{ color: "white" }} {...a11yProps(1)} />
+          <Tab label="Configurações gerais" sx={{ color: "white" }} {...a11yProps(2)} />
         </Tabs>
         <div className="p-8">
           {selected_tab === "dashboard" && <Dashboard />}
