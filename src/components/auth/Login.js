@@ -5,9 +5,25 @@ export default function LoginForm() {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [loading, setLoading] = useState(false);
 
-  function onSubmit(data) {
+  async function onSubmit(data) {
     setLoading(true);
-    console.log(data); // Aqui você pode enviar os dados do formulário para o seu servidor
+
+    // Aqui você pode enviar os dados para o servidor
+    const response = await fetch("/api/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (response.ok) {
+      const token = response.headers.get("Token");
+      sessionStorage.setItem("token", token);
+
+      window.location.href = "/";
+    }
+
     setLoading(false);
   }
 

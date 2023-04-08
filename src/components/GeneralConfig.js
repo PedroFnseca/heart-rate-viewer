@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form"
+import { useEffect } from "react";
 
 export default function GeneralConfig() {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -7,7 +8,7 @@ export default function GeneralConfig() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="max-w-sm mx-auto bg-white shadow-md rounded-md px-8 py-6">
-      <div className="pb-2">
+      <div className="flex flex-col mt-5 pb-2">
         <h1 className="text-xl font-bold text-black mb-2 text-left">Meus dados</h1>
         <hr className="my-2 border-blue-300"/>
         <label className="block text-gray-600 font-bold mb-2">Nome:</label>
@@ -29,7 +30,7 @@ export default function GeneralConfig() {
         {errors.email && <span className="text-red-500 text-xs">{errors.email.message}</span>}
       </div>
 
-      <div className="flex flex-col mt-5">
+      <div className="flex flex-col mt-5 pb-2">
         <h1 className="text-xl font-bold text-black mb-2 text-left">Contato de emergência</h1>
         <hr className="my-2 border-blue-300"/>
         <label className="block text-gray-600 font-bold mb-2">Nome:</label>

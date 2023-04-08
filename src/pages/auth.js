@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useState, useEffect } from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
@@ -15,6 +15,12 @@ export default function Auth() {
   const handleTabChange = (event, newValue) => {
     setSelectedTab(newValue);
   };
+
+  useEffect(() => {
+    if (sessionStorage.getItem("token")) {
+      window.location.href = "/";
+    }
+  }, []);
 
   return (
     <main className="min-h-screen flex flex-col justify-center items-center p-4">

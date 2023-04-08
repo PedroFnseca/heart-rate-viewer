@@ -2,7 +2,6 @@ import { useState} from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
-import Image from "next/image"
 
 import Dashboard from "@/components/Dashboard";
 import Reports from "@/components/Reports";
@@ -33,7 +32,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen p-2">
+    <div className="min-h-screen overflow-hidden">
       <Box sx={{ width: "100%", marginTop: "5px" }}>
         <Tabs value={value} onChange={handleChange} textColor="primary" indicatorColor="primary">
           <Tab label="Dashboard" sx={{ color: "white" }} {...a11yProps(0)} />
@@ -46,6 +45,6 @@ export default function Home() {
           {selected_tab === "configuracoes" && <GeneralConfig />}
         </div>
       </Box>
-    </main>
+    </div>
   )
 }
