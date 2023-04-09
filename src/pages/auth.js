@@ -40,7 +40,7 @@ export default function Auth() {
       </Box>
       <Tabs value={selectedTab} onChange={handleTabChange} textColor="primary" indicatorColor="primary" centered>
         <Tab label="Login" value="login" {...a11yProps(0)} sx={{ color: "white" }}/>
-        <Tab label="Novo usuário" value="newUser" {...a11yProps(1)} sx={{ color: "white" }}/>
+        {/* <Tab label="Novo usuário" value="newUser" {...a11yProps(1)} sx={{ color: "white" }} /> */}
       </Tabs>
     </Box>
   </main>

@@ -8,41 +8,37 @@ import Reports from "@/components/Reports";
 import GeneralConfig from "@/components/GeneralConfig";
 
 import { a11yProps } from "@/utils/a11yProps";
+import LogoutButton from "./LogoutButton";
 
 export default function Home() {
   const [value, setValue] = useState(0);
-  const [selected_tab, setSelectedTab] = useState("dashboard");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    switch (newValue) {
-      case 0:
-        setSelectedTab("dashboard");
-        break;
-      case 1:
-        setSelectedTab("relatorio");
-        break;
-      case 2:
-        setSelectedTab("configuracoes");
-        break;
-      default:
-        setSelectedTab("dashboard");
-        break;
-    }
+  };
+
+  // Mapeamento entre o valor do Tab selecionado e o componente a ser exibido
+  const tabContent = {
+    0: <Dashboard />,
+    1: <Reports />,
+    2: <GeneralConfig />
   };
 
   return (
     <div className="min-h-screen overflow-hidden">
       <Box sx={{ width: "100%", marginTop: "5px" }}>
-        <Tabs value={value} onChange={handleChange} textColor="primary" indicatorColor="primary">
-          <Tab label="Dashboard" sx={{ color: "white" }} {...a11yProps(0)} />
-          <Tab label="Relatório" sx={{ color: "white" }} {...a11yProps(1)} />
-          <Tab label="Configurações" sx={{ color: "white" }} {...a11yProps(2)} />
-        </Tabs>
+        <div className="flex justify-between">
+          <Tabs value={value} onChange={handleChange} textColor="primary" indicatorColor="primary">
+            <Tab label="Dashboard" sx={{ color: "white" }} {...a11yProps(0)} />
+            <Tab label="Relatório" sx={{ color: "white" }} {...a11yProps(1)} />
+            <Tab label="Configurações" sx={{ color: "white" }} {...a11yProps(2)} />
+          </Tabs>
+          <div style={{ zIndex: 1 }} className="m-2">
+            <LogoutButton />
+          </div>
+        </div>
         <div className="p-4">
-          {selected_tab === "dashboard" && <Dashboard />}
-          {selected_tab === "relatorio" && <Reports />}
-          {selected_tab === "configuracoes" && <GeneralConfig />}
+          {tabContent[value]}
         </div>
       </Box>
     </div>
