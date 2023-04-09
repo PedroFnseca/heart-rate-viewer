@@ -1,19 +1,54 @@
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { decodeJWT } from "@/utils/JWT";
+import {utils, writeFile} from "xlsx";
 
 export default function Reports() {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [hrRangeMin, setHrRangeMin] = useState(40);
 
-  function onSubmit(e) {
+  async function onSubmit(e) {
     e.preventDefault();
-    console.log({
-      startDate,
-      endDate,
-      hrRangeMin
-    });
+
+    if(!startDate) {
+      alert("Informe a data de início");
+      return;
+    }
+    
+    const token = localStorage.getItem("token");
+    const { id } = decodeJWT(token);
+
+    const response = await fetch("/api/reports", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        startDate,
+        endDate,
+        hrRangeMin,
+        userId: id
+      })
+    })
+
+    if(!response.ok) {
+      alert("Erro ao gerar relatório");
+      return;
+    }
+
+    const data = await response.json();
+
+    if(data.length === 0) {
+      alert("Nenhum dado encontrado");
+      return;
+    }
+
+    const wb = utils.book_new();
+    const ws = utils.json_to_sheet(data);
+    utils.book_append_sheet(wb, ws, "Relatório");
+    writeFile(wb, "Relatório.xlsx");
   }
 
   function handleStartDateChange(date) {
