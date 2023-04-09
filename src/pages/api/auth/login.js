@@ -1,4 +1,4 @@
-import { query } from "../../../utils/database"
+import { query } from "@/utils/database"
 import jwt from "jsonwebtoken"
 
 export default async function Login(req, res) {
