@@ -1,9 +1,12 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { AiOutlineEye as EyeIcon, AiOutlineEyeInvisible as EyeOffIcon } from "react-icons/ai";
 
 export default function LoginForm() {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [loading, setLoading] = useState(false);
+
+  const [showPassword, setShowPassword] = useState(false);
 
   async function onSubmit(data) {
     setLoading(true);
@@ -35,11 +38,30 @@ export default function LoginForm() {
         {errors.email && <span className="block text-red-500 mt-2">Campo obrigatório e deve ser um email válido.</span>}
       </div>
 
-      <div className="mb-4">
-        <label htmlFor="password" className="block text-gray-700 font-medium mb-2">Senha</label>
-        <input {...register("password", { required: true })} type="password" id="password" name="password" className={`w-full p-2 text-gray-700 border rounded-lg focus:outline-none focus:shadow-outline ${errors.password ? "border-red-500" : ""}`} />
-        {errors.password && <span className="block text-red-500 mt-2">Campo obrigatório.</span>}
+      <div className="mb-4 relative">
+      <label htmlFor="password" className="block text-gray-700 font-medium mb-2">
+        Senha
+      </label>
+      <div className="flex">
+        <input
+          {...register("password", { required: true })}
+          type={showPassword ? "text" : "password"}
+          id="password"
+          name="password"
+          className={`w-full p-2 text-gray-700 border rounded-lg focus:outline-none focus:shadow-outline ${
+            errors.password ? "border-red-500" : ""
+          }`}
+        />
+        <button
+          type="button"
+          className="absolute inset-y-0 right-0 flex items-center px-3 mt-8"
+          onClick={() => setShowPassword(!showPassword)}
+        >
+          {showPassword ? <EyeOffIcon className="h-6 w-6 text-gray-600" /> : <EyeIcon className="h-6 w-6 text-gray-600" />}
+        </button>
       </div>
+      {errors.password && <span className="block text-red-500 mt-2">Campo obrigatório.</span>}
+    </div>
 
       <button type="submit" className={`w-full p-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 ${loading ? "opacity-50 cursor-not-allowed" : ""}`} disabled={loading}>
         {loading ? "Carregando..." : "Entrar"}
