@@ -9,6 +9,10 @@ O projeto é desenvolvido com as seguintes tecnologias:
 - NextJS
 - Tailwindcss
 - React Hook Form
+- Nodemailer
+- JsonWebToken
+- MaterialUi
+- xlsx
 
 ### Sobre o sistema 💻
 
