@@ -9,8 +9,6 @@ export default async function User(req, res) {
 
   const { id } = req.query;
 
-  console.log(req.body)
-
   switch (method){
     case "GET":
       const user = await getQuery(id);
