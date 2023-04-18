@@ -18,6 +18,8 @@ O projeto é desenvolvido com as seguintes tecnologias:
 
 O sistema consiste em um aplicativo web onde a pessoa pode monitorar seu batimento cardíaco em tempo real com gráficos interativos 📊. Assim, é possível observar de maneira mais clara e objetiva o que está acontecendo com o coração dela. Quando o batimento cardíaco da pessoa sobrecarrega um certo nível, o sistema envia um alerta por mensagem SMS, email WhatsApp ✉️📱 para o usuário pré definido nas configurações.
 
+### Acesse a nossa [documentação interna!](https://github.com/PedroFnseca/heart-rate-viewer/blob/main/doc.md)
+
 <p align="center">
  <img height="500" width="250" src="https://github.com/PedroFnseca/heart-rate-viewer/blob/main/public/logo2.svg">
 <br>
