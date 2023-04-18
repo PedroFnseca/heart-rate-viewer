@@ -28,10 +28,10 @@ export async function sendMailHTML(to, subject, html) {
   await createTransporter().sendMail(mailOptions)
 }
 
-export async function sendWarningMail(to, emergency_contact_email, username){
+export async function sendWarningMail(to, emergency_contact_name, username){
   const subject = "Alerta de emergência"
   
-  const html = warningMail(emergency_contact_email, username)
+  const html = warningMail(emergency_contact_name, username)
 
   await sendMailHTML(to, subject, html)
 }
