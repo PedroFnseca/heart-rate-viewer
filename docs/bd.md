@@ -5,6 +5,8 @@
   <img src="https://user-images.githubusercontent.com/97262778/232672242-919925eb-c206-4448-b013-8c121c422d5b.png">
 </p>
 
+- [x] [SQL do banco de dados](https://github.com/PedroFnseca/heart-rate-viewer/blob/main/database/db.sql)
+
 <br>
 
 ## Tabela "tbl_user"
