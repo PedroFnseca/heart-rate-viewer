@@ -13,6 +13,7 @@ O projeto é desenvolvido com as seguintes tecnologias:
 - JsonWebToken
 - MaterialUi
 - xlsx
+- Mysql
 
 ### Sobre o sistema 💻
 
