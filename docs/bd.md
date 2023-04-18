@@ -1,6 +1,10 @@
 # Banco de Dados "db_heartHate" 
 > ### O banco de dados "db_heartHate" foi criado para armazenar informações relacionadas ao monitoramento cardíaco de usuários. Ele contém três tabelas: "tbl_user", "tbl_emergency_contact" e "tbl_heart". Abaixo estão as descrições detalhadas de cada tabela.
 
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/97262778/232672242-919925eb-c206-4448-b013-8c121c422d5b.png">
+</p>
+
 <br>
 
 ## Tabela "tbl_user"
@@ -44,3 +48,4 @@
 |rate	| INT(5) |	Número de batimentos cardíacos registrados na leitura (não nulo)|
 |user_id	| INT	|ID do usuário a que esta leitura está associada (não nulo, chave estrangeira referenciando tbl_user.id)|
 |datetime	| DATETIME |	Data e hora da leitura (opcional, padrão é o momento da inserção no banco)|
+
