@@ -25,6 +25,10 @@ O sistema consiste em um aplicativo web onde a pessoa pode monitorar seu batimen
 - [x] [Banco de dados 💾](https://github.com/PedroFnseca/heart-rate-viewer/blob/main/docs/bd.md)
 - [x] [Esp32 🤖](https://github.com/PedroFnseca/heart-rate-viewer/blob/main/docs/esp32.md)
 
-<p align="center">
- <img height="500" width="250" src="https://github.com/PedroFnseca/heart-rate-viewer/blob/main/public/logo2.svg">
 <br>
+
+<p align="center">
+ <img width="250" src="https://github.com/PedroFnseca/heart-rate-viewer/blob/main/public/logo2.svg">
+<br>
+ 
+ <br>
