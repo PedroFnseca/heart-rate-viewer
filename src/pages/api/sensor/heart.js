@@ -34,7 +34,7 @@ async function get(req, res) {
 }
 
 async function post(req, res) {
-  const { sensor_id, rate, user_id } = req.query;
+  const { sensor_id, rate, user_id } = req.body;
 
   if (!sensor_id || !rate || !user_id) {
     const error = !sensor_id ? "sensor_id" : !rate ? "rate" : "user_id";
