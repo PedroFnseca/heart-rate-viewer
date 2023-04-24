@@ -68,16 +68,18 @@ void connectToWiFi(){
 }
 
 void postHTTP(int heartRate){
-  String payload = "/api/sensor/heart?sensor_id=1&user_id=1&rate=" + String(heartRate);
+  String payloadJSON = "{\"sensor_id\":1,\"user_id\":1,\"rate\":" + String(heartRate) + "}";  
+  String path = "/api/sensor/heart";
 
   HTTPClient http;
 
-  http.begin(BASE_URL);
+  http.begin(BASE_URL + path);
+  http.addHeader("Content-Type", "application/json");
 
-  int httpCode = http.POST(payload);
+  int httpCode = http.POST(payloadJSON);
 
-  Serial.println("\n\n----------------------------------------------------------------------------------------------------");
-  Serial.println(BASE_URL + payload);
+  Serial.println("\n----------------------------------------------------------------------------------------------------");
+  Serial.println(BASE_URL + path);
   Serial.println("Method: POST");
   Serial.println("HTTP Code: " + String(httpCode));
 
@@ -146,4 +148,6 @@ void calcBPM() {
   startMillis= millis();
   
   BPM = filtroBPM.filterSamples((double)60/t);
+  // manda um valor entre 60 e 120 randomicamente para teste 
+  // BPM = random(60, 120);
 }
