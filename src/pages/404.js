@@ -5,7 +5,7 @@ export default function Custom404() {
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       <div className="max-w-sm py-6 px-4 bg-white rounded-md shadow-lg">
-        <Image src="/bug.svg" alt="Página não encontrada" width={300} height={300} className="mb-2"/>
+        <Image src="Bug.svg" alt="Página não encontrada" width={300} height={300} className="mb-2"/>
 
         <h2 className="text-2xl font-bold mb-4">Opsss... Página não encontrada</h2>
         <p className="text-lg mb-4">Desculpe, a página que você está tentando acessar não existe ou foi removida.</p>
