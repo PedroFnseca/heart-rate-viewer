@@ -20,3 +20,17 @@ body {
   color: rgb(var(--foreground-rgb));
   background:   radial-gradient(ellipse farthest-corner at top left, #2a4365, #1a202c);
 }
+
+/* Estilo para a barra de rolagem */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a4bb8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2196F3;
+  border-radius: 10px;
+}
