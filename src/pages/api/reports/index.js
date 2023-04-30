@@ -9,20 +9,20 @@ export default async function Reports(req, res) {
   }
   startDate = new Date(startDate);
 
-  if(!endDate) {
-    endDate = new Date();
-  }
+  !endDate ? endDate = new Date() : endDate = new Date(endDate);
 
   const sql = "SELECT * FROM tbl_heart WHERE rate > ? AND datetime >= ? AND datetime <= ? AND user_id = ? ORDER BY datetime ASC"
 
-  const response = await query(sql, [hrRangeMin, formatJSDateTOSQLDate(startDate), formatJSDateTOSQLDate(endDate), userId]);
+  const response = await query(sql, [hrRangeMin, formatJSDateTOSQLDate(startDate, 1), formatJSDateTOSQLDate(endDate, 2), userId]);
 
   const formattedResponse = formatJSONfromSQL(response[0]);
 
   res.status(200).json(formattedResponse);
 }
 
-function formatJSDateTOSQLDate(date) {
+function formatJSDateTOSQLDate(date, index) {
+  console.log(date, index)
+
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
   const day = date.getDate();
