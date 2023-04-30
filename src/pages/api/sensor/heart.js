@@ -1,4 +1,5 @@
 import { query } from "@/utils/database"
+import { sendWarningMail } from "@/utils/sendmail"
 
 export default async function handlerSensorHeart(req, res) {
   const { method } = req;
@@ -42,7 +43,21 @@ async function post(req, res) {
     return res.status(400).json({ error: `Missing ${error}`});
   }
 
+  verifyWarning(user_id, rate)
+
   await query("INSERT INTO tbl_heart (sensor_id, rate, user_id) VALUES (?, ?, ?)", [sensor_id, rate, user_id]);
 
   return res.status(200).json({ message: "Success" });
+}
+
+async function verifyWarning(user_id, rate) {
+  const responseUser = await query("SELECT * FROM tbl_user WHERE id = ?", [user_id]);
+  const user = responseUser[0][0]
+
+  if (user.warningheart > rate) return
+
+  const responseContact = await query("SELECT * FROM tbl_emergency_contact WHERE user_id = ?", [user_id]);
+  const contact = responseContact[0][0]
+
+  sendWarningMail(contact.email, contact.username, user.username)
 }
