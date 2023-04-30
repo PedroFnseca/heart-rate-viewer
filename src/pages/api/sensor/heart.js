@@ -15,7 +15,10 @@ export default async function handlerSensorHeart(req, res) {
 }
 
 async function get(req, res) {
+  console.log(req.query)
+
   const { sensor_id, user_id } = req.query;
+  let { limit } = req.query;
 
   if (!sensor_id || !user_id) {
     const error = !sensor_id ? "sensor_id" : "user_id";
@@ -23,7 +26,9 @@ async function get(req, res) {
     return res.status(400).json({ error: `Missing ${error}`});
   }
 
-  const response = await query("SELECT * FROM tbl_heart WHERE sensor_id = ? AND user_id = ?", [sensor_id, user_id]);
+  !limit ? limit = 500 : limit = parseInt(limit);
+
+  const response = await query("SELECT * FROM tbl_heart WHERE sensor_id = ? AND user_id = ? ORDER BY datetime DESC LIMIT ?", [sensor_id, user_id, limit]);
 
   const data = response[0]
 
