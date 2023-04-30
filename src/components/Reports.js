@@ -7,7 +7,7 @@ import {utils, writeFile} from "xlsx";
 export default function Reports() {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
-  const [hrRangeMin, setHrRangeMin] = useState(40);
+  const [hrRangeMin, setHrRangeMin] = useState(0);
 
   async function onSubmit(e) {
     e.preventDefault();
@@ -98,7 +98,7 @@ export default function Reports() {
               type="range"
               id="hrRangeMin"
               className="w-full"
-              min={30}
+              min={0}
               max={240}
               value={hrRangeMin}
               onChange={handleHrRangeMinChange}
