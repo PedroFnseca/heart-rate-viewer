@@ -30,7 +30,7 @@ export default async function User(req, res) {
 }
 
 async function getQuery(id) {
-  const sql = `SELECT u.id, u.username, u.email, u.phone, e.id AS emergency_contact_id, e.username AS emergency_contact_name, 
+  const sql = `SELECT u.id, u.username, u.email, u.phone, u.warningheart, e.id AS emergency_contact_id, e.username AS emergency_contact_name, 
   e.email AS emergency_contact_email, e.phone AS emergency_contact_phone
   FROM tbl_user u
   LEFT JOIN tbl_emergency_contact e ON u.id = e.user_id
@@ -42,10 +42,10 @@ async function getQuery(id) {
 }
 
 async function updateQuery(id, data) {
-  const arrayUser = [data.username, data.email, id]
+  const arrayUser = [data.username, data.email, data.warningheart, id]
   const arrayEmergencyContact = [data.emergency_contact_name, data.emergency_contact_email, data.emergency_contact_phone, data.emergency_contact_id]
 
-  const sqlUser = "UPDATE tbl_user SET username = ?, email = ? WHERE id = ?"
+  const sqlUser = "UPDATE tbl_user SET username = ?, email = ?, warningheart = ? WHERE id = ?"
   const sqlEmergencyContact = "UPDATE tbl_emergency_contact SET username = ?, email = ?, phone = ? WHERE id = ?"
 
   await query(sqlUser, arrayUser)

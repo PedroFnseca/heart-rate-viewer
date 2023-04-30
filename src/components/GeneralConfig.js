@@ -52,6 +52,9 @@ export default function GeneralConfig() {
 
     if (response.ok) {
       const data = await response.json();
+
+      console.log(data)
+
       showUserDataInInputs(data);
     }
 
@@ -65,8 +68,8 @@ export default function GeneralConfig() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="max-w-sm mx-auto bg-white shadow-md rounded-md px-8 py-6">
-      <div className="flex flex-col mt-5 pb-2">
-        <h1 className="text-xl font-bold text-black mb-2 text-left">Meus dados</h1>
+      <div className="flex flex-col pb-2">
+        <h1 className="text-xl font-bold text-black text-left">Meus dados</h1>
         <hr className="my-2 border-blue-300"/>
         <label className="block text-gray-600 font-bold mb-2">Nome:</label>
         <input
@@ -87,9 +90,19 @@ export default function GeneralConfig() {
           className="appearance-none border rounded-md py-2 px-3 leading-tight focus:outline-none focus:border-blue-500" 
         />
         {errors.email && <span className="text-red-500 text-xs">{errors.email.message}</span>}
+
+        <label className="block text-gray-600 font-bold mb-2">Aviso cardiaco:</label>
+        <input
+          autoComplete="off"
+          type="number"
+          defaultValue={userData.warningheart}
+          {...register("warningheart", { required: true })}
+          className="appearance-none border rounded-md py-2 px-3 leading-tight focus:outline-none focus:border-blue-500"
+        />
+        {errors.warningheart && <span className="text-red-500 text-xs">{errors.warningheart.message}</span>}
       </div>
 
-      <div className="flex flex-col mt-5 pb-2">
+      <div className="flex flex-col pb-2">
         <h1 className="text-xl font-bold text-black mb-2 text-left">Contato de emergência</h1>
         <hr className="my-2 border-blue-300"/>
         <label className="block text-gray-600 font-bold mb-2">Nome:</label>
