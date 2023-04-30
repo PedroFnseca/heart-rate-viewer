@@ -21,8 +21,6 @@ export default async function Reports(req, res) {
 }
 
 function formatJSDateTOSQLDate(date, index) {
-  console.log(date, index)
-
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
   const day = date.getDate();

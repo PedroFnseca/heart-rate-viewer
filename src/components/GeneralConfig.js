@@ -53,8 +53,6 @@ export default function GeneralConfig() {
     if (response.ok) {
       const data = await response.json();
 
-      console.log(data)
-
       showUserDataInInputs(data);
     }
 

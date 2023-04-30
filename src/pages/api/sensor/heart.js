@@ -15,8 +15,6 @@ export default async function handlerSensorHeart(req, res) {
 }
 
 async function get(req, res) {
-  console.log(req.query)
-
   const { sensor_id, user_id } = req.query;
   let { limit } = req.query;
 
