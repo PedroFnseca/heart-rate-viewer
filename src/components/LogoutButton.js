@@ -6,7 +6,6 @@ export default function LogoutButton() {
 
   function onClick() {
     sessionStorage.removeItem("token");
-    setIsHovered(false);
     router.push("/auth");
   }
 
@@ -22,7 +21,7 @@ export default function LogoutButton() {
       <span className="mr-1">
         <AiOutlineLogout />
       </span>
-      { getSizeWindow() > 640 ? "Sair" : "" }
+      {getSizeWindow() > 640 ? "Sair" : ""}
     </button>
   );
 }
