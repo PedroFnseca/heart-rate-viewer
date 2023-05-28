@@ -25,7 +25,7 @@ export default function Dashboard() {
     scales: {
       y: {
         min: 0,
-        max: 250,
+        suggestedMax: 250,
         ticks: {
           stepSize: 10
         }
@@ -54,9 +54,49 @@ export default function Dashboard() {
 
     const data = await response.json()
 
+    if (data.error) {
+      setHeartData({
+        labels: [],
+        datasets: [
+          {
+            label: "BPM",
+            data: [],
+            backgroundColor: "rgba(255, 99, 132, 1)",
+            borderColor: "rgba(255, 99, 132, 1)",
+            borderWidth: 4,
+            tension: 0.5
+          }
+        ]
+      })
+
+      setOptions({
+        scales: {
+          y: {
+            min: 0,
+            suggestedMax: 250,
+            ticks: {
+              stepSize: 10
+            }
+          }
+        },
+        plugins: {
+          title: {
+            display: true,
+            text: "Nenhum dado encontrado",
+            font: { size: 16 }
+          },
+          subtitle: {
+            display: true,
+            text: "Nenhum dado encontrado"
+          }
+        }
+      })
+
+      return
+    }
+
     setHeartData({
       labels: data.map((data) => {
-        // tranformar do formato YYYY-MMM-DDTHH:MM:SS:000Z para somente HH:MM:SS
         const date = data.datetime.split("T")[1].split(".")[0]
 
         return date
@@ -77,7 +117,7 @@ export default function Dashboard() {
       scales: {
         y: {
           min: 0,
-          max: 220,
+          suggestedMax: 250,
           ticks: {
             stepSize: 10
           }
